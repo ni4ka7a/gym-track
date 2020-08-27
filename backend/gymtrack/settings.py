@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'core.apps.CoreConfig'
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,10 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'gymtrack.utils.my_jwt_response_handler'
+}
 
 ROOT_URLCONF = 'gymtrack.urls'
 
