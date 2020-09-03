@@ -22,6 +22,11 @@ export class Form extends Component {
         const { name, description } = this.state;
         const workout = { name, description };
         this.props.addWorkout(workout);
+
+        this.setState({
+            name: '',
+            description: ''
+        });
     };
  
     render() {
