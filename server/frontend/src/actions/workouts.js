@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { createMessage } from './messages';
+import { createMessage, returnErrors } from './messages';
 
-import { GET_WORKOUTS, DELETE_WORKOUT, ADD_WORKOUT, GET_ERRORS } from './types';
+import { GET_WORKOUTS, DELETE_WORKOUT, ADD_WORKOUT } from './types';
 
 // get workouts
 export const getWorkouts = () => dispatch => {
@@ -11,7 +11,7 @@ export const getWorkouts = () => dispatch => {
                 type: GET_WORKOUTS,
                 payload: res.data
             });
-        }).catch(err => console.log(err));
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
 export const deleteWorkout = (id) => dispatch => {
@@ -33,15 +33,5 @@ export const addWorkout = (workout) => dispatch => {
                 type: ADD_WORKOUT,
                 payload: res.data
             });
-        }).catch(err => {
-            const errors = {
-                message: err.response.data,
-                status: err.response.status
-            };
-
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            })
-        });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
