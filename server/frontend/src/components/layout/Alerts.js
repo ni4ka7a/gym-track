@@ -9,6 +9,8 @@ export class Alerts extends Component {
         if (error !== prevProps.error) {
             if (error.message.name) alert.error(`Name: ${error.message.name.join()}`);
             if (error.message.description) alert.error(`Email: ${error.message.description.join()}`);
+            if (error.message.non_field_errors) alert.error(`Email: ${error.message.non_field_errors.join()}`);
+            if (error.message.username) alert.error(error.message.username.join());
         }
 
         if (message !== prevProps.message) {
@@ -18,6 +20,10 @@ export class Alerts extends Component {
 
             if (message.addWorkout) {
                 alert.success(message.addWorkout);
+            }
+
+            if (message.passwordNotMatch) {
+                alert.error(message.passwordNotMatch);
             }
         }
     }
