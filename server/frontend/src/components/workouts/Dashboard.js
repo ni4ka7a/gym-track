@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
-import Form from './Form';
+import React, { Fragment } from 'react';
+import AddWorkoutForm from './AddWorkoutForm';
 import Workouts from './Workouts';
 
 export default function Dashboard() {
-    return (
-        <Fragment>
-            <Form />
-            <Workouts />
-        </Fragment>
-    )
+  return (
+    <Fragment>
+      <AddWorkoutForm />
+      <Workouts />
+    </Fragment>
+  );
 }
