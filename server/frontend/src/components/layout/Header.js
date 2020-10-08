@@ -40,15 +40,6 @@ export class Header extends Component {
             Login
           </Link>
         </li>
-        {/* <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-            </li> */}
       </ul>
     );
 
@@ -73,24 +64,29 @@ export class Header extends Component {
           {isAuthenticated && (
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <Link class="nav-link" to="/dashboard">
                   Home <span class="sr-only">(current)</span>
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <Link class="nav-link" to="/workouts">
                   Workouts
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <Link class="nav-link" to="/routines">
                   Routines
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <Link class="nav-link" to="/">
+                  Exercises
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/">
                   Calendar
-                </a>
+                </Link>
               </li>
             </ul>
           )}
