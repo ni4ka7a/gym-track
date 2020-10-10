@@ -1,25 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getWorkouts, deleteWorkout } from '../../actions/workouts';
-import AddWorkoutForm from './AddWorkoutForm';
+import { getRoutines, deleteRoutine } from '../../actions/routines';
+import AddRoutineForm from './AddRoutineForm';
 
-export class Workouts extends Component {
+export class Routines extends Component {
     static propTypes = {
-        workouts: PropTypes.array.isRequired,
-        getWorkouts: PropTypes.func.isRequired,
-        deleteWorkout: PropTypes.func.isRequired,
+        routines: PropTypes.array.isRequired,
+        getRoutines: PropTypes.func.isRequired,
+        deleteRoutine: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
-        this.props.getWorkouts();
+        this.props.getRoutines();
     }
 
     render() {
         return (
             <Fragment>
-                <h1>Workouts</h1>
-                <AddWorkoutForm />
+                <h1>Routines</h1>
+                <AddRoutineForm />
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -29,16 +29,16 @@ export class Workouts extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.workouts.map((workout) => (
-                            <tr key={workout.id}>
-                                <td>{workout.id}</td>
-                                <td>{workout.name}</td>
-                                <td>{workout.description}</td>
+                        {this.props.routines.map((routine) => (
+                            <tr key={routine.id}>
+                                <td>{routine.id}</td>
+                                <td>{routine.name}</td>
+                                <td>{routine.description}</td>
                                 <td>
                                     <button
-                                        onClick={this.props.deleteWorkout.bind(
+                                        onClick={this.props.deleteRoutine.bind(
                                             this,
-                                            workout.id
+                                            routine.id
                                         )}
                                         className="btn btn-danger brn-sm"
                                     >
@@ -55,9 +55,9 @@ export class Workouts extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    workouts: state.workouts.workouts,
+    routines: state.routines.routines,
 });
 
-export default connect(mapStateToProps, { getWorkouts, deleteWorkout })(
-    Workouts
+export default connect(mapStateToProps, { getRoutines, deleteRoutine })(
+    Routines
 );

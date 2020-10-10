@@ -2,6 +2,10 @@ export const GET_WORKOUTS = 'GET_WORKOUTS';
 export const DELETE_WORKOUT = 'DELETE_WORKOUT';
 export const ADD_WORKOUT = 'ADD_WORKOUT';
 
+export const GET_ROUTINES = 'GET_ROUTINES';
+export const DELETE_ROUTINE = 'DELETE_ROUTINE';
+export const ADD_ROUTINE = 'ADD_ROUTINE';
+
 export const GET_ERRORS = 'GET_ERRORS';
 
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
