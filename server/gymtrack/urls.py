@@ -6,5 +6,6 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('', include('workouts.urls')),
     path('', include('accounts.urls')),
-    path('', include('routines.urls'))
+    path('', include('routines.urls')),
+    path('', include('exercises.urls'))
 ]
