@@ -6,6 +6,10 @@ export const GET_ROUTINES = 'GET_ROUTINES';
 export const DELETE_ROUTINE = 'DELETE_ROUTINE';
 export const ADD_ROUTINE = 'ADD_ROUTINE';
 
+export const GET_EXERCISES = 'GET_EXERCISES';
+export const DELETE_EXERCISE = 'DELETE_EXERCISE';
+export const ADD_EXERCISE = 'ADD_EXERCISE';
+
 export const GET_ERRORS = 'GET_ERRORS';
 
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';

@@ -34,6 +34,14 @@ export class Alerts extends Component {
                 alert.success(message.addRoutine);
             }
 
+            if (message.deleteExercise) {
+                alert.success(message.deleteExercise);
+            }
+
+            if (message.addExercise) {
+                alert.success(message.addExercise);
+            }
+
             if (message.passwordNotMatch) {
                 alert.error(message.passwordNotMatch);
             }

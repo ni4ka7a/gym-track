@@ -9,6 +9,7 @@ import Alerts from './layout/Alerts';
 import Dashboard from './dashboard/Dashboard';
 import Workouts from './workouts/Workouts';
 import Routines from './routines/Routines';
+import Exercises from './exercises/Exercises';
 import Register from './accounts/Register';
 import Login from './accounts/Login';
 import PrivateRoute from './common/PrivateRoute';
@@ -52,6 +53,11 @@ class App extends Component {
                                         exact
                                         path="/routines"
                                         component={Routines}
+                                    />
+                                    <PrivateRoute
+                                        exact
+                                        path="/exercises"
+                                        component={Exercises}
                                     />
                                     <Route
                                         exact
