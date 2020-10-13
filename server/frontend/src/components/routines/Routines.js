@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getRoutines, deleteRoutine } from '../../actions/routines';
 import AddRoutineForm from './AddRoutineForm';
 
@@ -26,6 +27,7 @@ export class Routines extends Component {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Exercises</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +36,11 @@ export class Routines extends Component {
                                 <td>{routine.id}</td>
                                 <td>{routine.name}</td>
                                 <td>{routine.description}</td>
+                                <td>
+                                    {routine.exercises
+                                        .map((x) => x.name)
+                                        .join(' ,')}
+                                </td>
                                 <td>
                                     <button
                                         onClick={this.props.deleteRoutine.bind(

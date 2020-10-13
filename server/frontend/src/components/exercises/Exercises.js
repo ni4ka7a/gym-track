@@ -26,6 +26,8 @@ export class Exercises extends Component {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Category</th>
+                            <th>Body Part</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +36,8 @@ export class Exercises extends Component {
                                 <td>{exercises.id}</td>
                                 <td>{exercises.name}</td>
                                 <td>{exercises.description}</td>
+                                <td>{exercises.category}</td>
+                                <td>{exercises.bodypart}</td>
                                 <td>
                                     <button
                                         onClick={this.props.deleteExercise.bind(

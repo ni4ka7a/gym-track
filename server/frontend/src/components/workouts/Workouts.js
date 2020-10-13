@@ -19,7 +19,7 @@ export class Workouts extends Component {
         return (
             <Fragment>
                 <h1>Workouts</h1>
-                <AddWorkoutForm />
+                {/* <AddWorkoutForm /> */}
                 <table className="table table-striped">
                     <thead>
                         <tr>

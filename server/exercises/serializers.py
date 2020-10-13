@@ -7,7 +7,7 @@ class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
         # fields = '__all__'
-        fields = ("id", "name", "description", "routines", "created_at", "author")
+        fields = ("id", "name", "description", "routines", "created_at", "author", "category", "bodypart")
         extra_kwargs = {'routines': {'required': False}}
 
     # def create(self, validated_data):
