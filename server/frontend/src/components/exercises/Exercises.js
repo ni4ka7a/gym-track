@@ -1,25 +1,38 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getExercises, deleteExercise } from '../../actions/exercises';
+import {
+    getExercises,
+    getExerciseCategories,
+    getExerciseBodyParts,
+    deleteExercise,
+} from '../../actions/exercises';
 import AddExerciseForm from './AddExerciseForm';
 
 export class Exercises extends Component {
     static propTypes = {
         exercises: PropTypes.array.isRequired,
         getExercises: PropTypes.func.isRequired,
+        getExerciseCategories: PropTypes.func.isRequired,
+        getExerciseBodyParts: PropTypes.func.isRequired,
         deleteExercise: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
         this.props.getExercises();
+        this.props.getExerciseCategories();
+        this.props.getExerciseBodyParts();
     }
 
     render() {
+        const { exerciseCategories, exerciseBodyParts } = this.props;
         return (
             <Fragment>
                 <h1>Exercises</h1>
-                <AddExerciseForm />
+                <AddExerciseForm
+                    exerciseCategories={exerciseCategories || {}}
+                    exerciseBodyParts={exerciseBodyParts || {}}
+                />
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -36,8 +49,10 @@ export class Exercises extends Component {
                                 <td>{exercises.id}</td>
                                 <td>{exercises.name}</td>
                                 <td>{exercises.description}</td>
-                                <td>{exercises.category}</td>
-                                <td>{exercises.bodypart}</td>
+                                <td>
+                                    {exerciseCategories[exercises.category]}
+                                </td>
+                                <td>{exerciseBodyParts[exercises.bodypart]}</td>
                                 <td>
                                     <button
                                         onClick={this.props.deleteExercise.bind(
@@ -60,8 +75,13 @@ export class Exercises extends Component {
 
 const mapStateToProps = (state) => ({
     exercises: state.exercises.exercises,
+    exerciseCategories: state.exercises.exerciseCategories,
+    exerciseBodyParts: state.exercises.exerciseBodyParts,
 });
 
-export default connect(mapStateToProps, { getExercises, deleteExercise })(
-    Exercises
-);
+export default connect(mapStateToProps, {
+    getExercises,
+    getExerciseCategories,
+    getExerciseBodyParts,
+    deleteExercise,
+})(Exercises);

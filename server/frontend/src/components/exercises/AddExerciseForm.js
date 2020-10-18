@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -13,70 +14,9 @@ export class AddExerciseForm extends Component {
 
     static propTypes = {
         addExercise: PropTypes.func.isRequired,
+        exerciseCategories: PropTypes.object.isRequired,
+        exerciseBodyParts: PropTypes.object.isRequired,
     };
-
-    // TODO: get from API
-    categories = [
-        {
-            value: 'BR',
-            title: 'Barbel',
-        },
-        {
-            value: 'DM',
-            title: 'Dumbbell',
-        },
-        {
-            value: 'MA',
-            title: 'Machine',
-        },
-        {
-            value: 'CA',
-            title: 'Cardio',
-        },
-        {
-            value: 'WB',
-            title: 'Weighted Bodyweight',
-        },
-    ];
-
-    bodyParts = [
-        {
-            value: 'CO',
-            title: 'Core',
-        },
-        {
-            value: 'AR',
-            title: 'Arms',
-        },
-        {
-            value: 'BA',
-            title: 'Back',
-        },
-        {
-            value: 'CH',
-            title: 'Chest',
-        },
-        {
-            value: 'LE',
-            title: 'Legs',
-        },
-        {
-            value: 'SH',
-            title: 'Shoulders',
-        },
-        {
-            value: 'OT',
-            title: 'Other',
-        },
-        {
-            value: 'FB',
-            title: 'Full Body',
-        },
-        {
-            value: 'CA',
-            title: 'Cardio',
-        },
-    ];
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
@@ -96,6 +36,7 @@ export class AddExerciseForm extends Component {
 
     render() {
         const { name, description, category, bodyPart } = this.state;
+        const { exerciseCategories, exerciseBodyParts } = this.props;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2>Add Exercise</h2>
@@ -131,9 +72,9 @@ export class AddExerciseForm extends Component {
                             value={category}
                         >
                             <option value="">Select category</option>
-                            {this.categories.map((x) => (
-                                <option key={x.value} value={x.value}>
-                                    {x.title}
+                            {_.map(exerciseCategories, (value, key) => (
+                                <option key={key} value={key}>
+                                    {value}
                                 </option>
                             ))}
                         </select>
@@ -149,9 +90,9 @@ export class AddExerciseForm extends Component {
                             value={bodyPart}
                         >
                             <option>Select body part</option>
-                            {this.bodyParts.map((x) => (
-                                <option key={x.value} value={x.value}>
-                                    {x.title}
+                            {_.map(exerciseBodyParts, (value, key) => (
+                                <option key={key} value={key}>
+                                    {value}
                                 </option>
                             ))}
                         </select>
@@ -167,4 +108,11 @@ export class AddExerciseForm extends Component {
     }
 }
 
-export default connect(null, { addExercise })(AddExerciseForm);
+// const mapStateToProps = (state) => ({
+//     exerciseCategories: state.exercises.exerciseCategories,
+//     exerciseBodyParts: state.exercises.exerciseBodyParts,
+// });
+
+export default connect(null, {
+    addExercise,
+})(AddExerciseForm);

@@ -1,5 +1,7 @@
 import {
     GET_EXERCISES,
+    GET_EXERCISE_CATEGORIES,
+    GET_EXERCISE_BODY_PARTS,
     DELETE_EXERCISE,
     ADD_EXERCISE,
 } from '../actions/types.js';
@@ -14,6 +16,16 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 exercises: action.payload,
+            };
+        case GET_EXERCISE_CATEGORIES:
+            return {
+                ...state,
+                exerciseCategories: action.payload,
+            };
+        case GET_EXERCISE_BODY_PARTS:
+            return {
+                ...state,
+                exerciseBodyParts: action.payload,
             };
         case DELETE_EXERCISE:
             return {
