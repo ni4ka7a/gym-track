@@ -2,11 +2,14 @@
 
 Simple app for tracking your gym workouts.
 
+[Project board](https://github.com/ni4ka7a/gym-track/projects/3?fullscreen=true)
+
 ## The project contains
 
 * Server - Django rest app
 * Web client - stand alone React app
 * Mobile client - TODO
+
 
 
 ## Development setup
